@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:todo/core/localization/app_strings.dart';
 import 'package:todo/core/utils/color_app.dart';
 import 'package:todo/core/utils/image_asset.dart';
 
@@ -37,7 +38,7 @@ class CustomContainer extends StatelessWidget {
                 height: 7.437,
               ),
               SizedBox(width: 10),
-              Text("Update Profile", style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: ColorApp.kBlackColor_2c)),
+              Text(AppStrings.updateProfile, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: ColorApp.kBlackColor_2c)),
             ],
           ),
           Spacer(),

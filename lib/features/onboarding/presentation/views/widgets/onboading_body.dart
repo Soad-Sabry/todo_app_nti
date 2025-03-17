@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:todo/core/localization/app_strings.dart';
 
 import '../../../../../core/utils/color_app.dart';
 import '../../../../../core/utils/image_asset.dart';
@@ -21,7 +22,7 @@ class OnBoardingBody extends StatelessWidget {
 
             ),
 
-            const Text("Welcome To\n \t Do It!",
+            const Text(AppStrings.welcome,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w400,
@@ -30,7 +31,7 @@ class OnBoardingBody extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40,),
-            const Text("Ready to conquer your tasks? Let's Do \n  It together.",
+            const Text(AppStrings.titleOnBoarding,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
@@ -39,7 +40,7 @@ class OnBoardingBody extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 56,),
-            BtnWidgets(text: "Let’s Start",
+            BtnWidgets(text: AppStrings.letsStart,
             onTap: (){
               Navigator.push(context,
                 MaterialPageRoute(builder: (context) => LoginView()),

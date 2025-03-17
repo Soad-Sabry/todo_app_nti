@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/core/localization/app_strings.dart';
 
 import '../../../../core/utils/image_asset.dart';
 import '../../../../core/widgets_core/btn_widgets.dart';
@@ -21,13 +22,13 @@ class ChangePassword extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Username Input
-              // CustomTextFormField(hintText:"Old  Password",controller: ,),
+              // CustomTextFormField(hintText:AppStrings.oldPassword,controller: ,),
               // const SizedBox(height: 15),
-              // CustomTextFormField(hintText:"New  Password",controller: ,),
+              // CustomTextFormField(hintText:AppStrings.newPassword,controller: ,),
               // const SizedBox(height: 15),
-              // CustomTextFormField(hintText:"Confirm Password",controller: ,),
+              // CustomTextFormField(hintText:AppStrings.updateProfile,controller: ,),
 
-              BtnWidgets(text: "Save", onTap:(){}),
+              BtnWidgets(text: AppStrings.save, onTap:(){}),
             ]
         ),
       ),

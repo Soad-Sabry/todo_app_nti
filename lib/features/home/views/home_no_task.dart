@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:todo/core/localization/app_strings.dart';
 import '../../../core/utils/image_asset.dart';
 import '../../../core/widgets_core/app_bar_widgets.dart';
 import '../../../core/widgets_core/text_style_widget.dart';
@@ -37,7 +38,8 @@ class HomeNoTasks extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextStyleWidget(
-                text: "There are no tasks yet,\nPress the button \nTo add a New Task",
+                text: AppStrings.noTasks,
+
                 fontSize: 16,
               ),
               SizedBox(height: 40),

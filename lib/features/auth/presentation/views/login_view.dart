@@ -5,6 +5,7 @@ import 'package:todo/core/utils/image_asset.dart';
 import 'package:todo/core/widgets_core/btn_widgets.dart';
 import 'package:todo/features/auth/presentation/views/register_view.dart';
 
+import '../../../../core/localization/app_strings.dart';
 import '../../../../core/widgets_core/custom_text_form_field.dart';
 import '../../../home/views/home_view.dart';
 import '../../manager/auth_cubit.dart';
@@ -43,12 +44,12 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Username Input
-                CustomTextFormField(hintText:"User Name",controller: AuthCubit.get(context).usernameController,),
+                CustomTextFormField(hintText:AppStrings.hintUserName,controller: AuthCubit.get(context).usernameController,),
                 const SizedBox(height: 15),
-                CustomTextFormField(hintText:"Password",controller: AuthCubit.get(context).passwordController,),
+                CustomTextFormField(hintText:AppStrings.password,controller: AuthCubit.get(context).passwordController,),
 
                 const SizedBox(height: 20),
-                BtnWidgets(text: "Login", onTap: state is AuthLoginLoading
+                BtnWidgets(text: AppStrings.login, onTap: state is AuthLoginLoading
                     ? null
                     : () {
                   cubit.onLoginPressed();
@@ -59,7 +60,7 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Don't Have An Account?",
+                      AppStrings.noHaveAccount,
                       style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     TextButton(
@@ -67,7 +68,7 @@ class LoginView extends StatelessWidget {
                         MyNavigator.navigateTo( RegisterView());
                       },
                       child: const Text(
-                        "Register",
+                      AppStrings.register,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.green,
@@ -80,7 +81,6 @@ class LoginView extends StatelessWidget {
               ],
             ),
           ),
-          backgroundColor: const Color(0xFFF3F3F3),
         );
       },
     );

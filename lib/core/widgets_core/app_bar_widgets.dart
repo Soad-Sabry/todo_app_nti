@@ -1,12 +1,13 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/core/widgets_core/text_style_widget.dart';
+import '../local/local_data.dart';
 import '../utils/image_asset.dart';
 
 class AppBarWidgets extends StatelessWidget {
   AppBarWidgets({super.key});
-
+  String userName =
+      LocalData.userName??"Guest";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +31,7 @@ class AppBarWidgets extends StatelessWidget {
               children: [
                 TextStyleWidget(text: "Hello", fontSize: 12),
 
-               TextStyleWidget(text: "", fontSize: 16)
+               TextStyleWidget(text:userName , fontSize: 16)
 
               ],
             ),

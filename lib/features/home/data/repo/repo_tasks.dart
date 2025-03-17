@@ -1,22 +1,21 @@
 import 'package:dio/dio.dart';
+import 'package:todo/core/network/api_helper.dart';
+import 'package:todo/core/network/end_points.dart';
 
 import '../model/task_model.dart';
 
 
 class TaskRepository {
-  static final TaskRepository _instance = TaskRepository._internal();
-  TaskRepository._internal();
-  factory TaskRepository() {
-    return _instance;
-  }
+  final  APIHelper apiHelper;
+
+  TaskRepository(this.apiHelper);
 
 
-  final Dio _dio = Dio();
   final String baseUrl = "https://nti-production.up.railway.app/api/";
 
   Future<List<Task>> fetchTasks() async {
     try {
-      final response = await _dio.get("$baseUrl/my_tasks");
+      final response = await apiHelper.getRequest(endPoint: EndPoints.getTasks);
       List<Task> tasks = (response.data as List).map((json) => Task.fromJson(json)).toList();
       return tasks;
     } catch (e) {
@@ -26,7 +25,7 @@ class TaskRepository {
 
   Future<void> addTask(Task task) async {
     try {
-      await _dio.post("$baseUrl/new_task", data: task.toJson());
+      await apiHelper.postRequest(endPoint: EndPoints.newTask, data: task.toJson());
     } catch (e) {
       throw Exception("Fail");
     }
@@ -34,7 +33,7 @@ class TaskRepository {
 
   Future<void> deleteTask(int id) async {
     try {
-      await _dio.delete("$baseUrl/tasks/$id");
+      await apiHelper.deleteRequest(endPoint: EndPoints.deleteTask);
     } catch (e) {
       throw Exception("Fail");
     }

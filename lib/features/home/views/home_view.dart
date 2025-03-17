@@ -16,62 +16,61 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TaskCubit(TaskRepository())..fetchTasks(),
-      child: BlocBuilder<TaskCubit, TaskState>(
-        builder: (context, state) {
-          if (state is TaskLoading) {
-            return const Scaffold(
+    return BlocBuilder<TaskCubit, TaskState>(
+      builder: (context, state) {
+        if (state is TaskLoading) {
+          return const Scaffold(
 
-              body: Center(child: CircularProgressIndicator()),
-            );
-          } else if (state is TaskEmpty) {
-            return const HomeNoTasks();
-          } else if (state is TaskLoaded) {
-            return Scaffold(
-              body: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: Row(
-                      children: [
-                        AppBarWidgets(),
-                        Spacer(),
-                        IconButton(
-                          icon: SvgPicture.asset(ImageAsset.plusIconUrl),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => AddTask()),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+            body: Center(child: CircularProgressIndicator()),
+          );
+        } else if (state is TaskEmpty) {
+          return const HomeNoTasks();
+        } else if (state is TaskLoaded) {
+           return Scaffold(
+            body: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: Row(
+                    children: [
+                      AppBarWidgets(),
+                      Spacer(),
+                      IconButton(
+                        icon: SvgPicture.asset(ImageAsset.plusIconUrl),
+                        onPressed: () async {
+                          final result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => AddTask()),
+                          );
+                          if (result == true) {
+                            context.read<TaskCubit>().fetchTasks();
+                          }
+                        },
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 140),
-
-                  ListView.builder(
+                ),
+                Expanded(
+                  child: ListView.builder(
                     itemCount: state.tasks.length,
                     itemBuilder: (context, index) {
                       final task = state.tasks[index];
                       return TaskCards(
                         textTitle: task.title,
-                        description: task.description,
+                        description: task.description, onDelete: () {
+                          TaskCubit.get(context).deleteTask(task.id!);
+                      },
                       );
                     },
                   ),
-                ],
-              ),
-            );
-          } else if (state is TaskError) {
-            return Scaffold(
-              body: Center(child: Text(" {state.message}")),
-            );
-          }
-          return const SizedBox();
-        },
-      ),
+                ),
+              ],
+            ),
+          );
+
+        }
+        return const SizedBox();
+      },
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:todo/core/localization/app_strings.dart';
 import 'package:todo/core/utils/image_asset.dart';
 import 'package:todo/features/profile/presentation/views/wedgits/custom_container.dart';
 
@@ -15,9 +15,9 @@ class ProfileView extends StatelessWidget {
      body:  Column(
         children: [
           AppBarWidgets(),
-      CustomContainer(iconUrl: ImageAsset.rowUrl, text: "Update Profile"),
-      CustomContainer(iconUrl: ImageAsset.lockUrl, text: "Change Password"),
-      CustomContainer(iconUrl: ImageAsset.settingUrl, text: " Setting"),
+      CustomContainer(iconUrl: ImageAsset.rowUrl, text: AppStrings.updateProfile),
+      CustomContainer(iconUrl: ImageAsset.lockUrl, text: AppStrings.changePassword),
+      CustomContainer(iconUrl: ImageAsset.settingUrl, text: AppStrings.setting),
 
       ],
       ),

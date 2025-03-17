@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo/core/helper/my_navigator.dart';
+import 'package:todo/core/localization/app_strings.dart';
 import 'package:todo/features/home/manager/task_cubit.dart';
+import 'package:todo/features/home/views/home_view.dart';
 import '../../../core/utils/image_asset.dart';
 import '../../../core/widgets_core/btn_widgets.dart';
 import '../../../core/widgets_core/custom_text_form_field.dart';
@@ -14,7 +17,7 @@ class AddTask extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Task"),
+        title: const Text(AppStrings.titleAddTask),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -35,19 +38,19 @@ class AddTask extends StatelessWidget {
             const SizedBox(height: 20),
 
             CustomTextFormField(
-              hintText: "Title",
+              hintText: AppStrings.hintTextTitle,
               controller: taskCubit.titleController,
             ),
             const SizedBox(height: 15),
 
             CustomTextFormField(
-              hintText: "Description",
+              hintText: AppStrings.description,
               controller: taskCubit.descriptionController,
             ),
             const SizedBox(height: 20),
 
             BtnWidgets(
-              text: "Add Task",
+              text: AppStrings.titleAddTask,
               onTap: () {
                 if (taskCubit.titleController.text.isNotEmpty &&
                     taskCubit.descriptionController.text.isNotEmpty) {
@@ -59,8 +62,7 @@ class AddTask extends StatelessWidget {
                   );
 
                   taskCubit.addTask(newTask);
-
-                  Navigator.pop(context);
+                  Navigator.pop(context, true);
                 }
               },
             ),

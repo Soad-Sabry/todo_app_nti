@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/core/localization/app_strings.dart';
 
 import '../../../../core/utils/image_asset.dart';
 import '../../../../core/widgets_core/btn_widgets.dart';
@@ -20,11 +21,10 @@ class UpdateProfile extends StatelessWidget {
     ),
     const SizedBox(height: 20),
 
-    // Username Input
   //  CustomTextFormField(hintText:"User Name",controller: ,),
     const SizedBox(height: 15),
 
-    BtnWidgets(text: "Update", onTap:(){}),
+    BtnWidgets(text: AppStrings.updateProfile, onTap:(){}),
     ]
     ),
     ),

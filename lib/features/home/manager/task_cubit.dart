@@ -33,6 +33,7 @@ class TaskCubit extends Cubit<TaskState> {
     if (_tasks.isEmpty) {
       emit(TaskEmpty());
     } else {
+      fetchTasks();
       emit(TaskLoaded(List.from(_tasks)));
     }
   }

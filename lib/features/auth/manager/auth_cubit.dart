@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/local/local_data.dart';
 import '../data/models/user_model.dart';
 import '../data/repo/auth_repo.dart';
 import 'auth_state.dart';
@@ -50,9 +51,16 @@ class AuthCubit extends Cubit<AuthState> {
       password: passwordController.text,
     );
 
-    response.fold(
-          (String error) => emit(AuthLoginError(error: error)),
-          (UserModel user) => emit(AuthLoginSuccess()),
-    );
+    // response.fold(
+    //       (String error) => emit(AuthLoginError(error: error)),
+    //       (UserModel user) => emit(AuthLoginSuccess()),
+    //
+    // );
+    response.fold((String error) => emit(AuthLoginError(error: error)), (
+        UserModel user,
+        ) {
+      LocalData.userName = user.username; // Store username in Singleton
+      emit(AuthLoginSuccess());
+    });
   }
 }

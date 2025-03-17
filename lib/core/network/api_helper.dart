@@ -23,11 +23,10 @@ class APIHelper {
 
   // get request
 
-  Future<ApiResponse> getRequest(
-      {required String endPoint,
-        Map<String, dynamic>? data,
-        bool isFormData = true,
-        bool isAuthorized = true}) async {
+  Future<ApiResponse> getRequest({required String endPoint,
+    Map<String, dynamic>? data,
+    bool isFormData = true,
+    bool isAuthorized = true}) async {
     try {
       var response = await dio.get(endPoint,
           data: isFormData ? FormData.fromMap(data ?? {}) : data,
@@ -42,11 +41,10 @@ class APIHelper {
 
   // post
 
-  Future<ApiResponse> postRequest(
-      {required String endPoint,
-        Map<String, dynamic>? data,
-        bool isFormData = true,
-        bool isAuthorized = true}) async {
+  Future<ApiResponse> postRequest({required String endPoint,
+    Map<String, dynamic>? data,
+    bool isFormData = true,
+    bool isAuthorized = true}) async {
     try {
       var response = await dio.post(endPoint,
           data: isFormData ? FormData.fromMap(data ?? {}) : data,
@@ -58,11 +56,11 @@ class APIHelper {
       return ApiResponse.fromError(e);
     }
   }
-  Future<ApiResponse> putRequest(
-      {required String endPoint,
-        Map<String, dynamic>? data,
-        bool isFormData = true,
-        bool isAuthorized = true}) async {
+
+  Future<ApiResponse> putRequest({required String endPoint,
+    Map<String, dynamic>? data,
+    bool isFormData = true,
+    bool isAuthorized = true}) async {
     try {
       var response = await dio.put(endPoint,
           data: isFormData ? FormData.fromMap(data ?? {}) : data,
@@ -75,11 +73,10 @@ class APIHelper {
     }
   }
 
-  Future<ApiResponse> deleteRequest(
-      {required String endPoint,
-        Map<String, dynamic>? data,
-        bool isFormData = true,
-        bool isAuthorized = true}) async {
+  Future<ApiResponse> deleteRequest({required String endPoint,
+    Map<String, dynamic>? data,
+    bool isFormData = true,
+    bool isAuthorized = true}) async {
     try {
       var response = await dio.delete(endPoint,
           data: isFormData ? FormData.fromMap(data ?? {}) : data,
@@ -90,5 +87,13 @@ class APIHelper {
     } catch (e) {
       return ApiResponse.fromError(e);
     }
+  }
+
+  Options getDefaultOptions({required bool isAuthorized}) {
+    return Options(
+      headers: {
+        if (isAuthorized) "Authorization": "Bearer ${LocalData.accessToken}",
+      },
+    );
   }
 }
