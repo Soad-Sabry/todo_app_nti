@@ -7,6 +7,7 @@ import 'package:todo/features/auth/presentation/views/register_view.dart';
 
 import '../../../../core/localization/app_strings.dart';
 import '../../../../core/widgets_core/custom_text_form_field.dart';
+import '../../../../generated/l10n.dart';
 import '../../../home/views/home_view.dart';
 import '../../manager/auth_cubit.dart';
 import '../../manager/auth_state.dart';
@@ -44,12 +45,13 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Username Input
-                CustomTextFormField(hintText:AppStrings.hintUserName,controller: AuthCubit.get(context).usernameController,),
+                CustomTextFormField(hintText:S.of(context).hintUserName
+                  ,controller: AuthCubit.get(context).usernameController,),
                 const SizedBox(height: 15),
-                CustomTextFormField(hintText:AppStrings.password,controller: AuthCubit.get(context).passwordController,),
+                CustomTextFormField(hintText:S.of(context).password,controller: AuthCubit.get(context).passwordController,),
 
                 const SizedBox(height: 20),
-                BtnWidgets(text: AppStrings.login, onTap: state is AuthLoginLoading
+                BtnWidgets(text: S.of(context).login, onTap: state is AuthLoginLoading
                     ? null
                     : () {
                   cubit.onLoginPressed();
@@ -59,16 +61,16 @@ class LoginView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      AppStrings.noHaveAccount,
+                     Text(
+                       S.of(context).noHaveAccount,
                       style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     TextButton(
                       onPressed: () {
                         MyNavigator.navigateTo( RegisterView());
                       },
-                      child: const Text(
-                      AppStrings.register,
+                      child:  Text(
+                        S.of(context).register,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.green,

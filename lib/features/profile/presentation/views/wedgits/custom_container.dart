@@ -5,12 +5,15 @@ import 'package:todo/core/localization/app_strings.dart';
 import 'package:todo/core/utils/color_app.dart';
 import 'package:todo/core/utils/image_asset.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class CustomContainer extends StatelessWidget {
   String iconUrl;
   String text;
+  void Function()? onTap;
 
 
-  CustomContainer({required this.iconUrl,required this.text });
+  CustomContainer({required this.iconUrl,required this.text ,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +33,19 @@ class CustomContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              SvgPicture.asset(
-                iconUrl,
-                width: 13,
-                height: 7.437,
-              ),
-              SizedBox(width: 10),
-              Text(AppStrings.updateProfile, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: ColorApp.kBlackColor_2c)),
-            ],
+          GestureDetector(
+            onTap:onTap ,
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  iconUrl,
+                  width: 13,
+                  height: 7.437,
+                ),
+                SizedBox(width: 10),
+                Text(S.of(context).updateProfile, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: ColorApp.kBlackColor_2c)),
+              ],
+            ),
           ),
           Spacer(),
           SvgPicture.asset(

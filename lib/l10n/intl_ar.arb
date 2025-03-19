@@ -1,0 +1,28 @@
+{
+  "register" :"انشاء حساب" ,
+  "name" : "الاسم",
+  "email" :"الاميل",
+  "hintUserName" : "اسم المستخدم",
+
+  "password" : "الباسوورد",
+  "passwordConfirm" : "تاكيد كلمه السر ",
+  "haveAccount" : "تمتلك حساب بالفعل",
+  "noHaveAccount" :"لا امتلك اكونت",
+
+  "login" : "تسجيل دخول",
+  "titleAddTask" :"اضافه تاسك",
+  "hintTextTitle":"العنوان",
+  "description"  :"الوصف",
+  "noTasks":"لا يوجد تاسكات \n اضغط على الزار لاضافه تاسك جديد",
+  "welcome":  "مرحبا بكم",
+  "titleOnBoarding" :"هل أنت مستعد لإنجاز مهامك؟ لنقم بذلك معًا.",
+  "letsStart":"هيا بنا نبدا",
+  "updateProfile" :"تحديث البروفايل",
+  "oldPassword" :"الباسورد القديم ",
+  "newPassword" :"الباسورد الجديد",
+  "save" : "حفظ",
+  "changePassword":"تغيير الباسورد",
+
+  "setting" : "الاعدادات "
+
+}

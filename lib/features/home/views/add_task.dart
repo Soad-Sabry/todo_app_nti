@@ -6,6 +6,7 @@ import 'package:todo/features/home/views/home_view.dart';
 import '../../../core/utils/image_asset.dart';
 import '../../../core/widgets_core/btn_widgets.dart';
 import '../../../core/widgets_core/custom_text_form_field.dart';
+import '../../../generated/l10n.dart';
 import '../data/model/task_model.dart';
 
 class AddTask extends StatelessWidget {
@@ -17,7 +18,7 @@ class AddTask extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.titleAddTask),
+        title:  Text(S.of(context).titleAddTask),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -38,19 +39,19 @@ class AddTask extends StatelessWidget {
             const SizedBox(height: 20),
 
             CustomTextFormField(
-              hintText: AppStrings.hintTextTitle,
+              hintText: S.of(context).hintTextTitle,
               controller: taskCubit.titleController,
             ),
             const SizedBox(height: 15),
 
             CustomTextFormField(
-              hintText: AppStrings.description,
+              hintText: S.of(context).description,
               controller: taskCubit.descriptionController,
             ),
             const SizedBox(height: 20),
 
             BtnWidgets(
-              text: AppStrings.titleAddTask,
+              text: S.of(context).titleAddTask,
               onTap: () {
                 if (taskCubit.titleController.text.isNotEmpty &&
                     taskCubit.descriptionController.text.isNotEmpty) {

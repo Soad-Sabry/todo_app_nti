@@ -4,6 +4,7 @@ import 'package:todo/core/localization/app_strings.dart';
 import '../../../core/utils/image_asset.dart';
 import '../../../core/widgets_core/app_bar_widgets.dart';
 import '../../../core/widgets_core/text_style_widget.dart';
+import '../../../generated/l10n.dart';
 import 'add_task.dart';
 
 class HomeNoTasks extends StatelessWidget {
@@ -38,7 +39,7 @@ class HomeNoTasks extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextStyleWidget(
-                text: AppStrings.noTasks,
+                text: S.of(context).noTasks,
 
                 fontSize: 16,
               ),

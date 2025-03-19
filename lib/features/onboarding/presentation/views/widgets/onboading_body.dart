@@ -5,6 +5,7 @@ import 'package:todo/core/localization/app_strings.dart';
 import '../../../../../core/utils/color_app.dart';
 import '../../../../../core/utils/image_asset.dart';
 import '../../../../../core/widgets_core/btn_widgets.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/views/login_view.dart';
 
 class OnBoardingBody extends StatelessWidget {
@@ -22,7 +23,7 @@ class OnBoardingBody extends StatelessWidget {
 
             ),
 
-            const Text(AppStrings.welcome,
+             Text(S.of(context).welcome,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w400,
@@ -31,7 +32,7 @@ class OnBoardingBody extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40,),
-            const Text(AppStrings.titleOnBoarding,
+             Text(S.of(context).titleOnBoarding,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
@@ -40,7 +41,7 @@ class OnBoardingBody extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 56,),
-            BtnWidgets(text: AppStrings.letsStart,
+            BtnWidgets(text: S.of(context).letsStart,
             onTap: (){
               Navigator.push(context,
                 MaterialPageRoute(builder: (context) => LoginView()),

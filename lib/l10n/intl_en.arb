@@ -1,0 +1,28 @@
+{
+  "register" :"Register",
+ "name" : "Name",
+  "email" : "Email",
+  "hintUserName" : "User Name",
+
+  "password" : "Password",
+   "passwordConfirm" : "Confirm Password",
+  "haveAccount" : "Already Have An Account?",
+   "noHaveAccount" :"Don't Have An Account?",
+
+   "login" : "Login",
+   "titleAddTask" :"Add Task",
+   "hintTextTitle":"Title",
+   "description"  :"Description",
+   "noTasks":"There are no tasks yet\nPress the button \nTo add a New Task",
+   "welcome":  "Welcome To\n \t Do It!",
+   "titleOnBoarding" :"Ready to conquer your tasks? Let's Do \n  It together.",
+    "letsStart":"Let’s Start",
+   "updateProfile" :"Update Profile",
+   "oldPassword" :"Old  Password",
+   "newPassword" :"New  Password",
+   "save" : "Save",
+   "changePassword":"Change Password",
+
+   "setting" : "Setting"
+
+}

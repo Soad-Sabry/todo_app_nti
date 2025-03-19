@@ -7,6 +7,7 @@ import 'package:todo/features/auth/presentation/views/login_view.dart';
 
 import '../../../../core/widgets_core/btn_widgets.dart';
 import '../../../../core/widgets_core/custom_text_form_field.dart';
+import '../../../../generated/l10n.dart';
 import '../../manager/auth_cubit.dart';
 import '../../manager/auth_state.dart';
 
@@ -44,14 +45,14 @@ class RegisterView extends StatelessWidget {
                   child: Image.asset(ImageAsset.flagUrl, fit: BoxFit.cover,height:298 ,),
                 ),
                 const SizedBox(height: 20),
-                CustomTextFormField(hintText:AppStrings.hintUserName,controller: AuthCubit.get(context).usernameController,),
+                CustomTextFormField(hintText:S.of(context).hintUserName,controller: AuthCubit.get(context).usernameController,),
                 const SizedBox(height: 15),
-                CustomTextFormField(hintText:AppStrings.password,controller: AuthCubit.get(context).passwordController,),
+                CustomTextFormField(hintText:S.of(context).password,controller: AuthCubit.get(context).passwordController,),
                 const SizedBox(height: 15),
-                CustomTextFormField(hintText:AppStrings.passwordConfirm,controller: AuthCubit.get(context).passwordConfirmController,),
+                CustomTextFormField(hintText:S.of(context).passwordConfirm,controller: AuthCubit.get(context).passwordConfirmController,),
 
                 const SizedBox(height: 20),
-                BtnWidgets(text: AppStrings.register, onTap: state is AuthLoginLoading
+                BtnWidgets(text: S.of(context).register, onTap: state is AuthLoginLoading
                     ? null
                     : () {
                   cubit.onLoginPressed();
@@ -62,8 +63,8 @@ class RegisterView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      AppStrings.haveAccount,
+                     Text(
+                      S.of(context).haveAccount,
                       style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     TextButton(
@@ -76,8 +77,8 @@ class RegisterView extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text(
-                        AppStrings.login,
+                      child:  Text(
+                        S.of(context).login,
                         style: TextStyle(
                           fontSize: 16,
                           color: ColorApp.kBlackColor_2c,
