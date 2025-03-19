@@ -13,28 +13,48 @@ class TaskCubit extends Cubit<TaskState> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
-  final List<Task> _tasks = [];
 
-  void fetchTasks() {
-    if (_tasks.isEmpty) {
-      emit(TaskEmpty());
-    } else {
-      emit(TaskLoaded(List.from(_tasks)));
+  void fetchTasks() async {
+    emit(TaskLoading());
+    try {
+      final tasks = await taskRepository.fetchTasks();
+      emit(TaskLoaded(tasks));
+    } catch (e) {
+      emit(TaskError(e.toString()));
     }
   }
 
-  void addTask(Task task) {
-    _tasks.add(task);
-    emit(TaskLoaded(List.from(_tasks)));
+  void addTask(Task task) async {
+    emit(TaskLoading()); //  Show loading before request
+    try {
+      final newTask = await taskRepository.addTask(task);
+      emit(TaskAdded(newTask)); //  Success state
+      fetchTasks(); //  Refresh tasks after adding
+    } catch (e) {
+      emit(TaskError(e.toString()));
+    }
   }
 
-  void deleteTask(int id) {
-    _tasks.removeWhere((task) => task.id == id);
-    if (_tasks.isEmpty) {
-      emit(TaskEmpty());
-    } else {
+  void deleteTask(int taskId) async {
+    emit(TaskLoading()); //  Show loading before request
+    try {
+      await taskRepository.deleteTask(taskId);
+      emit(TaskDeleted(taskId)); //  Success state
       fetchTasks();
-      emit(TaskLoaded(List.from(_tasks)));
+      emit(TaskLoading()); //  Refresh tasks after deletion
+    } catch (e) {
+      emit(TaskError(e.toString()));
+    }
+  }
+
+  void updateTask(Task task) async {
+    emit(TaskLoading()); //  Show loading before request
+    try {
+      final updatedTask = await taskRepository.updateTask(task);
+      emit(TaskUpdated(updatedTask)); //  Success state
+      fetchTasks(); //  Refresh tasks after update
+    } catch (e) {
+      emit(TaskError(e.toString()));
     }
   }
 }

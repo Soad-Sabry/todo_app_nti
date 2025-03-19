@@ -18,6 +18,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<TaskCubit>().fetchTasks();
     return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
         if (state is TaskLoading) {

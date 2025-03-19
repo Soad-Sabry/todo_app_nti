@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/image_asset.dart';
 import '../../../../core/widgets_core/btn_widgets.dart';
+import '../../../../core/widgets_core/custom_text_form_field.dart';
 import '../../../../generated/l10n.dart';
 
 class UpdateProfile extends StatelessWidget {
-  const UpdateProfile({super.key});
+   UpdateProfile({super.key});
+  TextEditingController controller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +17,11 @@ class UpdateProfile extends StatelessWidget {
       children: [
       SizedBox(
       width: double.infinity,
-      child: Image.asset(ImageAsset.logoUrl, fit: BoxFit.cover),
+      child: Image.asset(ImageAsset.flagUrl, fit: BoxFit.cover),
     ),
     const SizedBox(height: 20),
 
-  //  CustomTextFormField(hintText:"User Name",controller: ,),
+   CustomTextFormField(hintText:"User Name",controller:controller ),
     const SizedBox(height: 15),
 
     BtnWidgets(text: S.of(context).updateProfile, onTap:(){}),

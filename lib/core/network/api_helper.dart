@@ -76,7 +76,7 @@ class APIHelper {
   Future<ApiResponse> deleteRequest({required String endPoint,
     Map<String, dynamic>? data,
     bool isFormData = true,
-    bool isAuthorized = true}) async {
+    bool isAuthorized = true, required Map<String, String> headers}) async {
     try {
       var response = await dio.delete(endPoint,
           data: isFormData ? FormData.fromMap(data ?? {}) : data,

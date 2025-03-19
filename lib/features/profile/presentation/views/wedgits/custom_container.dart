@@ -18,7 +18,11 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+
+      width: double.infinity,
+      height: 70,
+      padding: EdgeInsets.all(15),
+      margin: EdgeInsets.only(top: 12, left: 20,right: 20),
       decoration: BoxDecoration(
         color: ColorApp.white,
         borderRadius: BorderRadius.circular(12),

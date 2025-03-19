@@ -15,7 +15,7 @@ class AppBarWidgets extends StatelessWidget {
     return SafeArea(
       child: GestureDetector(
         onTap: (){
-          MyNavigator.navigateTo(ProfileView());
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>ProfileView()));
 
         },
         child: Container(
