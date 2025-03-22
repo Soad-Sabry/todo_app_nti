@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/helper/my_navigator.dart';
-import 'package:todo/core/localization/app_strings.dart';
+import 'package:todo/core/localization/app_strings_keys.dart';
 import 'package:todo/features/home/manager/task_cubit.dart';
 import 'package:todo/features/home/views/home_view.dart';
 import '../../../core/utils/image_asset.dart';
@@ -55,11 +55,11 @@ class AddTask extends StatelessWidget {
               onTap: () {
                 if (taskCubit.titleController.text.isNotEmpty &&
                     taskCubit.descriptionController.text.isNotEmpty) {
-                  final newTask = Task(
+                  final newTask = TaskModel(
                     id: DateTime.now().millisecondsSinceEpoch,
                     title: taskCubit.titleController.text,
                     description: taskCubit.descriptionController.text,
-                    time: DateTime.now(),
+                    createdAt: DateTime.now().toString(),
                   );
 
                   taskCubit.addTask(newTask);

@@ -1,0 +1,27 @@
+import 'package:todo/core/localization/app_strings_keys.dart';
+
+Map<String, String> ar = {
+  AppStringsKeys.login: 'تسجيل الدخول',
+  AppStringsKeys.register: 'انشاء حساب',
+  AppStringsKeys.name: 'الاسم',
+  AppStringsKeys.email: 'الاميل',
+  AppStringsKeys.hintUserName: 'اسم المستخدم',
+  AppStringsKeys.password: 'الباسوورد',
+  AppStringsKeys.passwordConfirm: 'تاكيد كلمه السر',
+  AppStringsKeys.haveAccount: 'تمتلك حساب بالفعل',
+  AppStringsKeys.noHaveAccount: 'لا امتلك اكونت',
+  AppStringsKeys.titleAddTask: 'اضافه تاسك',
+  AppStringsKeys.hintTextTitle: 'العنوان',
+  AppStringsKeys.description: 'الوصف',
+  AppStringsKeys.noTasks: 'لا يوجد تاسكات \n اضغط على الزر لاضافه تاسك جديد',
+  AppStringsKeys.welcome: 'مرحبا بكم',
+  AppStringsKeys.titleOnBoarding: 'هل أنت مستعد لإنجاز مهامك؟ لنقم بذلك معًا.',
+  AppStringsKeys.letsStart: 'هيا بنا نبدا',
+  AppStringsKeys.updateProfile: 'تحديث البروفايل',
+  AppStringsKeys.oldPassword: 'الباسورد القديم',
+  AppStringsKeys.newPassword: 'الباسورد الجديد',
+  AppStringsKeys.save: 'حفظ',
+  AppStringsKeys.changePassword: 'تغيير الباسورد',
+  AppStringsKeys.setting: 'الاعدادات',
+ // AppStringsKeys.language: 'اللغه',
+};

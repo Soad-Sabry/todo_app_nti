@@ -23,6 +23,7 @@
   "save" : "حفظ",
   "changePassword":"تغيير الباسورد",
 
-  "setting" : "الاعدادات "
+  "setting" : "الاعدادات ",
+  "language": "اللغه"
 
 }

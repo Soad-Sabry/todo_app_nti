@@ -10,4 +10,6 @@ abstract class EndPoints {
   static const String updateTask = "tasks";
   static const String updateUserProfile = "update_profile";
   static const String changePassword = "change_password";
+  static const String refreshToken = "$baseUrl/auth/refresh-token";
+
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:todo/core/helper/my_navigator.dart';
 import 'package:todo/core/utils/image_asset.dart';
 import 'package:todo/core/widgets_core/btn_widgets.dart';
 import 'package:todo/features/auth/presentation/views/register_view.dart';
+import 'package:todo/features/home/manager/task_cubit.dart';
 
-import '../../../../core/localization/app_strings.dart';
+import '../../../../core/localization/app_strings_keys.dart';
 import '../../../../core/widgets_core/custom_text_form_field.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/views/home_view.dart';
@@ -23,6 +25,7 @@ class LoginView extends StatelessWidget {
             context,
           ).showSnackBar(const SnackBar(content: Text("Login Successful!")));
           // Navigate to home screen
+          TaskCubit.get(context).fetchTasks();
           MyNavigator.navigateTo(HomeView());
          } else if (state is AuthLoginError) {
           ScaffoldMessenger.of(
@@ -45,13 +48,16 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Username Input
-                CustomTextFormField(hintText:S.of(context).hintUserName
+                CustomTextFormField(hintText:AppStringsKeys.hintUserName
                   ,controller: AuthCubit.get(context).usernameController,),
                 const SizedBox(height: 15),
-                CustomTextFormField(hintText:S.of(context).password,controller: AuthCubit.get(context).passwordController,),
+                CustomTextFormField(hintText:AppStringsKeys.password,controller: AuthCubit.get(context).passwordController,),
 
                 const SizedBox(height: 20),
-                BtnWidgets(text: S.of(context).login, onTap: state is AuthLoginLoading
+                BtnWidgets(
+                  // text: AppStringsKeys.login,
+                  text: AppStringsKeys.login.tr,
+                  onTap: state is AuthLoginLoading
                     ? null
                     : () {
                   cubit.onLoginPressed();
@@ -62,7 +68,7 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                      Text(
-                       S.of(context).noHaveAccount,
+                       AppStringsKeys.noHaveAccount,
                       style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     TextButton(
@@ -70,7 +76,7 @@ class LoginView extends StatelessWidget {
                         MyNavigator.navigateTo( RegisterView());
                       },
                       child:  Text(
-                        S.of(context).register,
+                        AppStringsKeys.register,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.green,

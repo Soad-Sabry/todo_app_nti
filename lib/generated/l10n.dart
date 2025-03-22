@@ -214,6 +214,11 @@ class S {
   String get setting {
     return Intl.message('Setting', name: 'setting', desc: '', args: []);
   }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

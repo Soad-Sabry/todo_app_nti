@@ -1,25 +1,54 @@
-class Task {
-  final int? id;
-  final String title;
-  final String description;
-  final DateTime time;
+class GetTasksResponseModel {
+  bool? status;
+  List<TaskModel>? tasks;
 
-  Task({this.id, required this.title, required this.description, required this.time});
+  GetTasksResponseModel({this.status, this.tasks});
 
-  factory Task.fromJson(Map<String, dynamic> json) {
-    return Task(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      time: DateTime.parse(json['time']),
-    );
+  GetTasksResponseModel.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    if (json['tasks'] != null) {
+      tasks = <TaskModel>[];
+      json['tasks'].forEach((v) {
+        tasks!.add(new TaskModel.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      "title": title,
-      "description": description,
-      "time": time.toIso8601String(),
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    if (this.tasks != null) {
+      data['tasks'] = this.tasks!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class TaskModel {
+  String? createdAt;
+  String? description;
+  int? id;
+  String? imagePath;
+  String? title;
+
+  TaskModel(
+      {this.createdAt, this.description, this.id, this.imagePath, this.title});
+
+  TaskModel.fromJson(Map<String, dynamic> json) {
+    createdAt = json['created_at'];
+    description = json['description'];
+    id = json['id'];
+    imagePath = json['image_path'];
+    title = json['title'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['created_at'] = this.createdAt;
+    data['description'] = this.description;
+    data['id'] = this.id;
+    data['image_path'] = this.imagePath;
+    data['title'] = this.title;
+    return data;
   }
 }

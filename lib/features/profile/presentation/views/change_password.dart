@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/core/localization/app_strings.dart';
+import 'package:todo/core/localization/app_strings_keys.dart';
 
 import '../../../../core/utils/image_asset.dart';
 import '../../../../core/widgets_core/btn_widgets.dart';
-import '../../../../core/widgets_core/custom_text_form_field.dart';
 import '../../../../generated/l10n.dart';
 
 class ChangePassword extends StatelessWidget {
@@ -18,7 +17,7 @@ class ChangePassword extends StatelessWidget {
             children: [
               SizedBox(
                 width: double.infinity,
-                child: Image.asset(ImageAsset.logoUrl, fit: BoxFit.cover),
+                child: Image.asset(ImageAsset.flagUrl, fit: BoxFit.cover),
               ),
               const SizedBox(height: 20),
 

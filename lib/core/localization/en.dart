@@ -1,0 +1,27 @@
+import 'package:todo/core/localization/app_strings_keys.dart';
+
+Map<String, String> en = {
+  AppStringsKeys.login: 'Login',
+  AppStringsKeys.register: 'Register',
+  AppStringsKeys.name: 'Name',
+  AppStringsKeys.email: 'Email',
+  AppStringsKeys.hintUserName: 'Username',
+  AppStringsKeys.password: 'Password',
+  AppStringsKeys.passwordConfirm: 'Confirm Password',
+  AppStringsKeys.haveAccount: 'Already have an account?',
+  AppStringsKeys.noHaveAccount: 'Don’t have an account?',
+  AppStringsKeys.titleAddTask: 'Add Task',
+  AppStringsKeys.hintTextTitle: 'Title',
+  AppStringsKeys.description: 'Description',
+  AppStringsKeys.noTasks: 'No tasks available \n Click the button to add a new task',
+  AppStringsKeys.welcome: 'Welcome',
+  AppStringsKeys.titleOnBoarding: 'Are you ready to accomplish your tasks? Let’s do it together.',
+  AppStringsKeys.letsStart: 'Let’s Start',
+  AppStringsKeys.updateProfile: 'Update Profile',
+  AppStringsKeys.oldPassword: 'Old Password',
+  AppStringsKeys.newPassword: 'New Password',
+  AppStringsKeys.save: 'Save',
+  AppStringsKeys.changePassword: 'Change Password',
+  AppStringsKeys.setting: 'Settings',
+ // AppStringsKeys.language: 'Language',
+};

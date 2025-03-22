@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/local/local_data.dart';
+import '../../../core/cashe_helper/cache_data.dart';
 import '../data/models/user_model.dart';
 import '../data/repo/auth_repo.dart';
 import 'auth_state.dart';
@@ -41,7 +42,6 @@ class AuthCubit extends Cubit<AuthState> {
           (String successMessage) => emit(AuthRegisterSuccess(msg: successMessage)),
     );
   }
-
   // Login Function
   void onLoginPressed() async {
     emit(AuthLoginLoading());
@@ -51,15 +51,12 @@ class AuthCubit extends Cubit<AuthState> {
       password: passwordController.text,
     );
 
-    // response.fold(
-    //       (String error) => emit(AuthLoginError(error: error)),
-    //       (UserModel user) => emit(AuthLoginSuccess()),
-    //
-    // );
+
     response.fold((String error) => emit(AuthLoginError(error: error)), (
         UserModel user,
         ) {
-      LocalData.userName = user.username; // Store username in Singleton
+      //LocalData.userName = user.username;
+
       emit(AuthLoginSuccess());
     });
   }

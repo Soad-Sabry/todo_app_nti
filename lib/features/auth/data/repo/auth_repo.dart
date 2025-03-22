@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:todo/core/cashe_helper/cache_helper.dart';
+import 'package:todo/core/cashe_helper/cache_helper_keys.dart';
 
-import '../../../../core/local/local_data.dart';
+import '../../../../core/cashe_helper/cache_data.dart';
 import '../../../../core/network/api_helper.dart';
 import '../../../../core/network/api_response.dart';
 import '../../../../core/network/end_points.dart';
@@ -59,6 +61,9 @@ class AuthRepo {
         // Store Tokens in Local Storage
         LocalData.accessToken = authResponse.accessToken;
         LocalData.refreshToken = authResponse.refreshToken;
+        CacheHelper.saveData(key: CacheHelperKeys.accessToken, value: LocalData.accessToken );
+        CacheHelper.saveData(key: CacheHelperKeys.refreshToken, value: LocalData.refreshToken );
+
 
         return Right(authResponse.user!);
       } else {

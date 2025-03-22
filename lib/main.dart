@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo/core/cashe_helper/cache_data.dart';
 import 'package:todo/core/network/api_helper.dart';
 import 'package:todo/core/utils/color_app.dart';
 import 'package:todo/features/auth/manager/auth_cubit.dart';
 import 'package:todo/features/home/views/home_view.dart';
 
+import 'core/cashe_helper/cache_helper.dart';
+import 'core/localization/localization_helper.dart';
 import 'features/home/data/repo/repo_tasks.dart';
 import 'features/home/manager/task_cubit.dart';
 import 'features/onboarding/presentation/views/splash_view.dart';
 import 'generated/l10n.dart';
 
 
-void main() async {
+void main()async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-
-  runApp(MyApp(isLoggedIn: isLoggedIn));}
+  await CacheHelper.init();
+  await AppLocalization.setLanguage();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
+  const MyApp({super.key});
 
-  const MyApp({super.key, required this.isLoggedIn});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -36,13 +37,15 @@ class MyApp extends StatelessWidget {
     ],
 
     child: GetMaterialApp(
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
+      locale: Locale(LocalData.lang!),
+      translations: AppLocalization(),
+      // localizationsDelegates: [
+      //   S.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      // ],
+      // supportedLocales: S.delegate.supportedLocales,
 
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -51,7 +54,8 @@ class MyApp extends StatelessWidget {
            fontFamily: "Lexend Deca",
         //  cardTheme: ColorApp.kBackgroundColor
       ),
-      home: isLoggedIn ? const HomeView() : const SplashView(),
+      home:const SplashView(),
+
       //const MyHomePage(title: 'Flutter Demo Home Page'),
     ),
 ),

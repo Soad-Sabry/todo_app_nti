@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveAccount": MessageLookupByLibrary.simpleMessage("تمتلك حساب بالفعل"),
     "hintTextTitle": MessageLookupByLibrary.simpleMessage("العنوان"),
     "hintUserName": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغه"),
     "letsStart": MessageLookupByLibrary.simpleMessage("هيا بنا نبدا"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),

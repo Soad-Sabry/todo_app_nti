@@ -1,5 +1,11 @@
-abstract class AppStrings
+import 'dart:ui';
+
+import '../cashe_helper/cache_helper_keys.dart';
+
+abstract class AppStringsKeys
 {
+  static const Locale localeEN = Locale(CacheHelperKeys.keyEN);//'en'
+  static const Locale localeAR = Locale(CacheHelperKeys.keyAR);//'ar'
   // RegisterView
   static const String register = 'Register';
   static const String name = 'Name';

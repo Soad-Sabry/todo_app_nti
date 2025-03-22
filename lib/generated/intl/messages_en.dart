@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "hintTextTitle": MessageLookupByLibrary.simpleMessage("Title"),
     "hintUserName": MessageLookupByLibrary.simpleMessage("User Name"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "letsStart": MessageLookupByLibrary.simpleMessage("Let’s Start"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),

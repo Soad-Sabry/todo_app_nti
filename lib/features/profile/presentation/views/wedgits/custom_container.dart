@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:todo/core/localization/app_strings.dart';
+import 'package:todo/core/localization/app_strings_keys.dart';
 import 'package:todo/core/utils/color_app.dart';
 import 'package:todo/core/utils/image_asset.dart';
 
-import '../../../../../generated/l10n.dart';
 
 class CustomContainer extends StatelessWidget {
   String iconUrl;
@@ -47,7 +46,7 @@ class CustomContainer extends StatelessWidget {
                   height: 7.437,
                 ),
                 SizedBox(width: 10),
-                Text(S.of(context).updateProfile, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: ColorApp.kBlackColor_2c)),
+                Text(text, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: ColorApp.kBlackColor_2c)),
               ],
             ),
           ),

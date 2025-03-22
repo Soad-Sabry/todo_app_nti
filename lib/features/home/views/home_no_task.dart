@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:todo/core/localization/app_strings.dart';
+import 'package:todo/core/localization/app_strings_keys.dart';
 import '../../../core/utils/image_asset.dart';
 import '../../../core/widgets_core/app_bar_widgets.dart';
 import '../../../core/widgets_core/text_style_widget.dart';

@@ -1,15 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todo/core/helper/my_navigator.dart';
-import 'package:todo/core/localization/app_strings.dart';
 import 'package:todo/core/utils/image_asset.dart';
 import 'package:todo/features/profile/presentation/views/change_password.dart';
 import 'package:todo/features/profile/presentation/views/update_profile.dart';
 import 'package:todo/features/profile/presentation/views/wedgits/custom_container.dart';
-import 'package:todo/features/profile/presentation/views/wedgits/setting_language_view.dart';
+import 'package:todo/features/profile/presentation/views/setting_language_view.dart';
 
+import '../../../../core/localization/app_strings_keys.dart';
 import '../../../../core/widgets_core/app_bar_widgets.dart';
-import '../../../../generated/l10n.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -28,7 +27,7 @@ class ProfileView extends StatelessWidget {
 
         },
           iconUrl: ImageAsset.rowUrl,
-          text: S.of(context).updateProfile),
+          text: AppStringsKeys.updateProfile.tr),
       CustomContainer(
           onTap: (){
             MyNavigator.navigateTo(ChangePassword());
@@ -36,7 +35,7 @@ class ProfileView extends StatelessWidget {
           },
 
           iconUrl: ImageAsset.lockUrl,
-          text: S.of(context).changePassword),
+          text: AppStringsKeys.changePassword.tr),
       CustomContainer(
           onTap: (){
             MyNavigator.navigateTo(SettingLanguageView());
@@ -44,7 +43,7 @@ class ProfileView extends StatelessWidget {
           },
 
           iconUrl: ImageAsset.settingUrl,
-          text: S.of(context).setting),
+          text: AppStringsKeys.setting.tr),
 
       ],
       ),

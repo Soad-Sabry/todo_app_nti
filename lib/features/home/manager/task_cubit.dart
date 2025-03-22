@@ -7,24 +7,25 @@ import 'task_state.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   final TaskRepository taskRepository;
+
   static TaskCubit get(context) => BlocProvider.of(context);
 
   TaskCubit(this.taskRepository) : super(TaskLoading());
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
-
   void fetchTasks() async {
     emit(TaskLoading());
     try {
-      final tasks = await taskRepository.fetchTasks();
-      emit(TaskLoaded(tasks));
+      final response = await taskRepository.fetchTasks();
+      response.fold((error) {emit(TaskError(error));}, (tasks) {emit(TaskLoaded(tasks));});
+
     } catch (e) {
       emit(TaskError(e.toString()));
     }
   }
 
-  void addTask(Task task) async {
+  void addTask(TaskModel task) async {
     emit(TaskLoading()); //  Show loading before request
     try {
       final newTask = await taskRepository.addTask(task);
@@ -47,7 +48,7 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
-  void updateTask(Task task) async {
+  void updateTask(TaskModel task) async {
     emit(TaskLoading()); //  Show loading before request
     try {
       final updatedTask = await taskRepository.updateTask(task);

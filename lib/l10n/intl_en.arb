@@ -23,6 +23,7 @@
    "save" : "Save",
    "changePassword":"Change Password",
 
-   "setting" : "Setting"
+   "setting" : "Setting",
+ "language" : "Language"
 
 }

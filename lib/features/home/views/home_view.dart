@@ -18,15 +18,18 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<TaskCubit>().fetchTasks();
     return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
+        print(state.toString());
         if (state is TaskLoading) {
           return const Scaffold(
 
             body: Center(child: CircularProgressIndicator()),
           );
-        } else if (state is TaskEmpty) {
+        } else if(state is TaskError){
+          return Scaffold(body: Text("error ${state.message}"),);
+        }
+        else if (state is TaskEmpty) {
           return const HomeNoTasks();
         } else if (state is TaskLoaded) {
            return Scaffold(
@@ -64,8 +67,8 @@ class HomeView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final task = state.tasks[index];
                       return TaskCards(
-                        textTitle: task.title,
-                        description: task.description, onDelete: () {
+                        textTitle: task.title??'No Title',
+                        description: task.description??"No Desc", onDelete: () {
                           TaskCubit.get(context).deleteTask(task.id!);
                       },
                       );
@@ -77,7 +80,9 @@ class HomeView extends StatelessWidget {
           );
 
         }
-        return const SizedBox();
+        return Scaffold(
+          body: const SizedBox(),
+        );
       },
     );
   }
